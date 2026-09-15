@@ -29,21 +29,21 @@ export function resumeHtml(p: Profile): string {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>${p.name} — Résumé</title>
 <style>
-  @page { size: A4; margin: 10mm 13mm; }
+  @page { size: A4; margin: 8mm 12mm; }
   * { box-sizing: border-box; }
-  body { font-family: Georgia, "Times New Roman", serif; color: #1a1a1a; font-size: 9.1pt; line-height: 1.26; margin: 0; }
+  body { font-family: Georgia, "Times New Roman", serif; color: #1a1a1a; font-size: 9.1pt; line-height: 1.22; margin: 0; }
   h1 { font-size: 20pt; margin: 0; letter-spacing: 0.4px; }
   .role-line { font-size: 10.5pt; color: #444; margin: 3px 0 2px; text-transform: uppercase; letter-spacing: 1.1px; }
-  .contact { font-size: 9.4pt; color: #555; margin: 0 0 12px; }
-  h2 { font-size: 9.2pt; text-transform: uppercase; letter-spacing: 1.4px; color: #000; border-bottom: 1px solid #999; padding-bottom: 2px; margin: 9px 0 5px; }
+  .contact { font-size: 9.4pt; color: #555; margin: 0 0 9px; }
+  h2 { font-size: 9.2pt; text-transform: uppercase; letter-spacing: 1.4px; color: #000; border-bottom: 1px solid #999; padding-bottom: 2px; margin: 7px 0 4px; }
   h3 { font-size: 11pt; margin: 0; }
   .summary { margin: 0 0 4px; }
-  .role { margin-bottom: 6px; }
+  .role { margin-bottom: 5px; }
   .role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .period { font-size: 9pt; color: #555; white-space: nowrap; }
   .org { font-size: 9.6pt; color: #444; font-style: italic; margin: 1px 0 4px; }
   ul { margin: 0; padding-left: 16px; }
-  li { margin-bottom: 1.5px; }
+  li { margin-bottom: 1px; }
   p { margin: 0 0 4px; }
 </style></head>
 <body>

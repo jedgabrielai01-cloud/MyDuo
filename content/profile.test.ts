@@ -13,9 +13,16 @@ describe("profile data", () => {
     expect(profile.location).toBe("Philippines");
   });
 
-  it("has four roles, newest first", () => {
-    expect(profile.roles).toHaveLength(4);
+  it("has five roles, newest first", () => {
+    expect(profile.roles).toHaveLength(5);
     expect(profile.roles[0].title).toBe("DXC AI Champion");
+  });
+
+  it("covers the whole history back to 2016, so the 9-year claim is visible", () => {
+    const oldest = profile.roles.at(-1)!;
+    expect(oldest.org).toContain("Accenture");
+    expect(oldest.period).toContain("2016");
+    expect(JSON.stringify(profile.roles)).toContain("Tata Consultancy Services");
   });
 
   it("links to the correct LinkedIn profile", () => {

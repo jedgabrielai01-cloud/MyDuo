@@ -81,6 +81,16 @@ export const profile: Profile = {
         "Trained new SRE team members, improving onboarding processes.",
       ],
     },
+    {
+      title: "Senior Software Engineer",
+      org: "Accenture — Utilities, Hospitality Clients",
+      period: "November 2016 — June 2021",
+      bullets: [
+        "Delivered production support and technical development, consistently meeting SLAs on job abend resolution.",
+        "Proposed and implemented solutions with downstream impact analysis and thorough testing.",
+        "Built automated JCL tools using Easytrieve, REXX, and DFSORT.",
+      ],
+    },
   ],
 
   skills: [
