@@ -1,21 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { buildSystemPrompt, profileToText, wrapUserQuestion } from "./prompt";
 import { profile } from "@/content/profile";
+import { expectNoPii } from "@/test/pii";
 
 const prompt = buildSystemPrompt();
 
 describe("buildSystemPrompt", () => {
-  it("contains no email address", () => {
-    expect(prompt).not.toMatch(/[\w.+-]+@[\w-]+\.[\w.]+/);
-  });
-
-  it("contains no phone number", () => {
-    expect(prompt).not.toMatch(/\+?\d[\d\s()-]{8,}/);
-  });
-
-  it("never leaks the home city", () => {
-    expect(prompt.toLowerCase()).not.toContain("bacoor");
-    expect(prompt.toLowerCase()).not.toContain("cavite");
+  it("carries no email, phone, or sub-country location", () => {
+    expectNoPii(prompt);
   });
 
   it("includes the LinkedIn URL so contact questions can be routed", () => {
