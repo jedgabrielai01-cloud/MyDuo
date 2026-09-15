@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --term-bg: #050705;
+  --term-green: #3bf07a;
+  --term-dim: #1f8f45;
+  --term-bright: #c8ffd9;
+  --term-amber: #ffb84d;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-term-bg: var(--term-bg);
+  --color-term-green: var(--term-green);
+  --color-term-dim: var(--term-dim);
+  --color-term-bright: var(--term-bright);
+  --color-term-amber: var(--term-amber);
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--term-bg);
+  color: var(--term-green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--term-amber);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+::selection {
+  background: var(--term-green);
+  color: var(--term-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--term-amber);
+  outline-offset: 2px;
+}
+
+@keyframes term-blink {
+  50% { opacity: 0; }
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 0.5rem;
+  height: 1rem;
+  background: var(--term-green);
+  vertical-align: -2px;
+  animation: term-blink 1.1s steps(2) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term-cursor { animation: none; }
+  .term-scanlines, .term-glow { display: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

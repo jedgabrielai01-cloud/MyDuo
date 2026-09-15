@@ -27,3 +27,6 @@ Thumbs.db
 
 # source résumé — contains phone + email, never commit or serve
 JedGabrielSeno_Resume_2026_v2.pdf
+
+# playwright-mcp scratch output
+.playwright-mcp/
