@@ -193,7 +193,7 @@ export function CommandBar() {
             disabled={busy}
             autoComplete="off"
             spellCheck={false}
-            placeholder={busy ? "thinking…" : "ask anything, or type 'help'"}
+            placeholder={busy ? "thinking…" : "ask anything, or 'help'"}
             className="flex-1 bg-transparent text-term-bright placeholder:text-term-dim focus:outline-none"
           />
         </div>
