@@ -33,6 +33,9 @@ enforced by tests. See `CLAUDE.md`.
 
 ## Deploy
 
-Vercel. Set `OPENROUTER_API_KEY`, `OPENROUTER_MODEL`,
-`OPENROUTER_FALLBACK_MODELS`, and `NEXT_PUBLIC_SITE_URL` as production
-environment variables.
+Vercel. Set `OPENROUTER_API_KEY`, `OPENROUTER_MODEL`, and
+`OPENROUTER_FALLBACK_MODELS` as production environment variables.
+
+The site's own URL needs no variable: `lib/site-url.ts` reads Vercel's
+`VERCEL_PROJECT_PRODUCTION_URL`, which Vercel always sets and which follows a
+custom domain once one is attached. Set `SITE_URL` only to override it.

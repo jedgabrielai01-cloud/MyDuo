@@ -1,6 +1,7 @@
 import { buildSystemPrompt, wrapUserQuestion } from "@/lib/prompt";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { mapFailure, politeError, streamAnswer, type ChatMessage } from "@/lib/openrouter";
+import { resolveSiteUrl } from "@/lib/site-url";
 
 export const runtime = "nodejs";
 export const maxDuration = 40;
@@ -83,7 +84,7 @@ export async function POST(req: Request): Promise<Response> {
     messages,
     models: models(),
     apiKey: process.env.OPENROUTER_API_KEY ?? "",
-    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    siteUrl: resolveSiteUrl(),
   });
 
   const encoder = new TextEncoder();

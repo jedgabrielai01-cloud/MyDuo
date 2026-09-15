@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import { StructuredData } from "@/components/StructuredData";
 import { Scanlines } from "@/components/terminal/Scanlines";
+import { resolveSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const plexMono = IBM_Plex_Mono({
@@ -11,7 +12,7 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = resolveSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

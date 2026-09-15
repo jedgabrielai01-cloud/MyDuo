@@ -296,7 +296,7 @@ timeouts, fallback, and error mapping — so the route handler stays thin.
 | `OPENROUTER_API_KEY` | yes | — | Server-only. Never `NEXT_PUBLIC_`. |
 | `OPENROUTER_MODEL` | no | `inclusionai/ling-3.0-flash-vl:free` | |
 | `OPENROUTER_FALLBACK_MODELS` | no | the two sibling free models | Comma-separated |
-| `NEXT_PUBLIC_SITE_URL` | no | `http://localhost:3000` | OpenRouter attribution + OG tags |
+| `SITE_URL` | no | Vercel’s `VERCEL_PROJECT_PRODUCTION_URL`, else `http://localhost:3000` | OpenRouter attribution + OG tags. Server-only; needs no `NEXT_PUBLIC_` prefix, since nothing in the browser reads it. |
 | `RATE_LIMIT_PER_HOUR` | no | `15` | |
 
 One API key total. No database, vector store, email service, or analytics key.
