@@ -286,6 +286,20 @@ describe("streamAnswer", () => {
     expect(body.stream).toBe(true);
   });
 
+  it("disables reasoning so the token budget reaches the answer", async () => {
+    let init: RequestInit | undefined;
+    const fetchImpl = async (_url: string, i: RequestInit) => {
+      init = i;
+      return sseResponse(["data: [DONE]"]);
+    };
+
+    await collect(
+      streamAnswer({ ...BASE, models: ["m1"], fetchImpl: fetchImpl as unknown as typeof fetch }),
+    );
+
+    expect(JSON.parse(init!.body as string).reasoning).toEqual({ enabled: false });
+  });
+
   it("never leaks the api key into an error reason", async () => {
     const fetchImpl = async () =>
       new Response(JSON.stringify({ error: { message: "invalid sk-or-v1-abcdef123456" } }), {

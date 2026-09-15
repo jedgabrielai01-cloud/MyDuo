@@ -29,6 +29,10 @@ describe("buildSystemPrompt", () => {
     expect(prompt.toLowerCase()).toContain("never state an email address or phone number");
   });
 
+  it("says the résumé is redacted, so the model cannot imply it holds contact details", () => {
+    expect(prompt.toLowerCase()).toContain("résumé contains no contact details");
+  });
+
   it("is large enough to be useful but far under the context window", () => {
     expect(prompt.length).toBeGreaterThan(2000);
     expect(prompt.length).toBeLessThan(60000);

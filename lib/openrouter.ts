@@ -163,6 +163,12 @@ export async function* streamAnswer(opts: {
           stream: true,
           max_tokens: MAX_TOKENS,
           temperature: TEMPERATURE,
+          // The ling models are reasoning models and spend 350-690 tokens
+          // thinking before the first word of the answer, which both starves
+          // max_tokens (measured finish_reason "length" at 631/700 reasoning
+          // tokens) and pushes past the first-token deadline. The visitor never
+          // sees the thinking, so it buys nothing here.
+          reasoning: { enabled: false },
         }),
       });
 
