@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env — never commit secrets
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel
+
+# test
+coverage/
+
+# brainstorming mockups
+.superpowers/
+
+# os
+.DS_Store
+Thumbs.db
+
+# source résumé — contains phone + email, never commit or serve
+JedGabrielSeno_Resume_2026_v2.pdf
