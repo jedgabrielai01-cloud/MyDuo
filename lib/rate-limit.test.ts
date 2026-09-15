@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { checkRateLimit, resetRateLimits } from "./rate-limit";
+import { checkRateLimit, parseLimit, resetRateLimits } from "./rate-limit";
 
 const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
@@ -40,5 +40,29 @@ describe("checkRateLimit", () => {
   it("tracks IPs independently", () => {
     for (let i = 0; i < 5; i++) checkRateLimit("1.1.1.1", i * 1000);
     expect(checkRateLimit("2.2.2.2", 5000).allowed).toBe(true);
+  });
+});
+
+describe("parseLimit", () => {
+  it("uses the value when it is a positive integer", () => {
+    expect(parseLimit("30", 15)).toBe(30);
+  });
+
+  it("falls back when the variable is unset", () => {
+    expect(parseLimit(undefined, 15)).toBe(15);
+  });
+
+  it("falls back when the variable is set but empty", () => {
+    // Number("") is 0, which would block every request with "limit 0 per hour".
+    expect(parseLimit("", 15)).toBe(15);
+  });
+
+  it("falls back when the variable is not a number", () => {
+    expect(parseLimit("lots", 15)).toBe(15);
+  });
+
+  it("falls back when the variable is zero or negative", () => {
+    expect(parseLimit("0", 15)).toBe(15);
+    expect(parseLimit("-5", 15)).toBe(15);
   });
 });

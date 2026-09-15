@@ -2,7 +2,19 @@ const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
 
 const PER_MINUTE = 5;
-const PER_HOUR = Number(process.env.RATE_LIMIT_PER_HOUR ?? 15);
+
+/**
+ * Reads a request limit from an environment variable.
+ * Only a positive integer is a limit; an unset, empty, or unparseable value
+ * falls back to the default. Without this, a variable that exists but is empty
+ * parses as 0 and silently blocks every request.
+ */
+export function parseLimit(raw: string | undefined, fallback: number): number {
+  const n = Number(raw);
+  return raw && Number.isInteger(n) && n > 0 ? n : fallback;
+}
+
+const PER_HOUR = parseLimit(process.env.RATE_LIMIT_PER_HOUR, 15);
 
 export type RateVerdict = { allowed: true } | { allowed: false; reason: string };
 
