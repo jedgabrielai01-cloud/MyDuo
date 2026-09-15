@@ -8,7 +8,7 @@ Read it before changing behavior — it records decisions and their reasons.
 
 ## Stack
 
-Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Vitest. Node 24, npm.
+Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Vitest. Node 24, npm.
 No database, no AI SDK — OpenRouter is called with raw `fetch` and its SSE
 stream parsed by hand in `lib/openrouter.ts`, because the two-stage timeouts,
 pre-first-token model fallback, and partial-answer preservation are simpler
@@ -67,6 +67,13 @@ Model: `inclusionai/ling-3.0-flash-vl:free`, with the two sibling free models as
 fallbacks. Timeouts are 10s to first token (then try the next model) and 25s
 total. Errors surface as a polite in-theme message plus one dim line with a
 mapped reason, HTTP status, and model name — never a stack trace.
+
+## Assets
+
+`assets/IBMPlexMono-*.ttf` exist only for `app/opengraph-image.tsx`: Satori has
+no built-in monospace, so without registering the font the OG card renders in
+sans-serif. The résumé PDF is generated — never copy the source PDF into
+`public/`.
 
 ## Conventions
 

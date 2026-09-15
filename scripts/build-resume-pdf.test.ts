@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resumeHtml } from "./build-resume-pdf";
+import { resumeHtml } from "./build-resume-pdf.mts";
 import { profile } from "@/content/profile";
 import { expectNoPii } from "@/test/pii";
 

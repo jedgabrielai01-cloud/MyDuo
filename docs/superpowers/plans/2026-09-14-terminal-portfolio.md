@@ -6,7 +6,7 @@
 
 **Architecture:** One server-rendered Next.js page holds the full résumé. A client command bar handles known commands locally with zero network cost; anything else POSTs to `/api/chat`, which streams plain text from OpenRouter through a raw `fetch` SSE parser that owns its own timeouts, model fallback, and error mapping. All résumé data lives in one typed module that feeds the page, the commands, the AI prompt, and the PDF.
 
-**Tech Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Vitest · Playwright (PDF generation only) · OpenRouter HTTP API (no SDK)
+**Tech Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Vitest · Playwright (PDF generation only) · OpenRouter HTTP API (no SDK)
 
 **Spec:** `docs/superpowers/specs/2026-09-14-terminal-portfolio-design.md`
 

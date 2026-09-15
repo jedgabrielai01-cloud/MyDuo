@@ -228,9 +228,12 @@ Upstash Redis is the upgrade path if the free cap is ever actually hit.
 Generated, not redacted. Covering text in an existing PDF leaves it extractable,
 which defeats the purpose.
 
-`scripts/build-resume-pdf.ts` renders a clean, ATS-friendly, one-page résumé from
+`scripts/build-resume-pdf.mts` renders a clean, ATS-friendly, one-page résumé from
 `content/profile.ts` to `public/jed-gabriel-seno-resume.pdf` using headless
-Chromium print-to-PDF. Plain professional layout — deliberately not
+Chrome print-to-PDF — Playwright's `channel: "chrome"`, driving the locally
+installed browser rather than a bundled build. The script runs only on a
+developer machine, never on Vercel, so there is no reason to ship ~130MB of
+Chromium; `.mts` keeps Node from reparsing it as CommonJS. Plain professional layout — deliberately not
 terminal-themed, because recruiters and ATS parsers need conventional formatting.
 Text is real and selectable, so parsers read it correctly.
 
