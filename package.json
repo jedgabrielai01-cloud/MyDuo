@@ -9,7 +9,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:pdf": "node scripts/build-resume-pdf.ts"
+    "build:pdf": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-resume-pdf.mts"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -27,6 +27,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "jsdom": "^29.1.1",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^5.0.1"
